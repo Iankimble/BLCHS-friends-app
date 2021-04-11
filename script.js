@@ -22,6 +22,9 @@ function getFriends() {
 	// Step 2: Declare another function that will create a new card from the data returned
 	// This function is nested inside of our main getFriends() function
 	// Our function has 2 arguements that we will use as placeholder for that data we'll be using
+
+	// Remember that JavaScript is Read from top to bottom so the order of events is important
+
 	function newCard(friend, index) {
 		// To make our card we'll need to create a new div dynamically
 		let potentialFriendCard = document.createElement('div');
@@ -38,19 +41,17 @@ function getFriends() {
 
 		// Create a new element that will go inside our card that will contain our content
 		let pfContent = document.createElement('div');
-
 		// Create a class that we'll use for our content
 		pfContent.className = 'content';
 
 		// Attach our image to our new content div
 		potentialFriendCard.appendChild(cardImg);
 
-		// the text we'll use for our card
+		// The text we'll use for our card
 		let cardBody = document.createTextNode(friend.name.first);
 
 		// Attach the content to the body
 		pfContent.appendChild(cardBody);
-
 		// Attach the content to the card
 		potentialFriendCard.appendChild(pfContent);
 
@@ -69,6 +70,8 @@ function getFriends() {
 		// Logic for the click event on our button
 		document.getElementById(index).addEventListener('click', addFriend);
 
+		// The next function we'll call once the first one is done
+
 		// functoin that adds a friend to our friend list
 		function addFriend() {
 			// Console log confirming that our button and selected friend has been clicked
@@ -78,6 +81,9 @@ function getFriends() {
 			document.getElementById(index).remove();
 
 			// then we create a new card similar to the card above
+
+			// Essentially we are doing the same steps as we did on our first function
+
 			let myFriendCard = document.createElement('div');
 			myFriendCard.id = index;
 			myFriendCard.className = 'friendCard';
@@ -94,6 +100,7 @@ function getFriends() {
 			let removeFriendBtn = document.createElement('button');
 			removeFriendBtn.innerText = 'Remove friend';
 			removeFriendBtn.id = index;
+			removeFriendBtn.className = 'button';
 
 			// We attach the card to our html
 			document.getElementById('mf').appendChild(myFriendCard);
